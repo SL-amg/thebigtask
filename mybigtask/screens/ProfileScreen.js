@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
 import { Ionicons } from '@expo/vector-icons';
-import Background from '../components/Background';
 
 export default function ProfileScreen() {
   const { user, register, login, logout } = useAuth();
@@ -54,48 +53,46 @@ export default function ProfileScreen() {
 
   if (user) {
     return (
-      <Background>
-        <View style={styles.content}>
-          <View style={styles.profileHeader}>
-            <View style={styles.avatarContainer}>
-              <Text style={styles.avatarText}>
-                {user.email[0].toUpperCase()}
-              </Text>
-            </View>
-            <Text style={styles.emailText}>{user.email}</Text>
+      <View style={styles.container}>
+        <View style={styles.profileHeader}>
+          <View style={styles.avatarContainer}>
+            <Text style={styles.avatarText}>
+              {user.email[0].toUpperCase()}
+            </Text>
           </View>
-
-          <View style={styles.menuItems}>
-            <TouchableOpacity style={styles.menuItem}>
-              <Ionicons name="receipt-outline" size={24} color="#333" />
-              <Text style={styles.menuText}>Order History</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.menuItem}>
-              <Ionicons name="location-outline" size={24} color="#333" />
-              <Text style={styles.menuText}>Delivery Addresses</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.menuItem}>
-              <Ionicons name="card-outline" size={24} color="#333" />
-              <Text style={styles.menuText}>Payment Methods</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.menuItem}>
-              <Ionicons name="settings-outline" size={24} color="#333" />
-              <Text style={styles.menuText}>Settings</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={[styles.menuItem, styles.logoutButton]}
-              onPress={handleLogout}
-            >
-              <Ionicons name="log-out-outline" size={24} color="#ff4444" />
-              <Text style={[styles.menuText, styles.logoutText]}>Logout</Text>
-            </TouchableOpacity>
-          </View>
+          <Text style={styles.emailText}>{user.email}</Text>
         </View>
-      </Background>
+
+        <View style={styles.menuItems}>
+          <TouchableOpacity style={styles.menuItem}>
+            <Ionicons name="receipt-outline" size={24} color="#333" />
+            <Text style={styles.menuText}>Order History</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem}>
+            <Ionicons name="location-outline" size={24} color="#333" />
+            <Text style={styles.menuText}>Delivery Addresses</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem}>
+            <Ionicons name="card-outline" size={24} color="#333" />
+            <Text style={styles.menuText}>Payment Methods</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem}>
+            <Ionicons name="settings-outline" size={24} color="#333" />
+            <Text style={styles.menuText}>Settings</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={[styles.menuItem, styles.logoutButton]}
+            onPress={handleLogout}
+          >
+            <Ionicons name="log-out-outline" size={24} color="#ff4444" />
+            <Text style={[styles.menuText, styles.logoutText]}>Logout</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     );
   }
 
@@ -163,23 +160,16 @@ export default function ProfileScreen() {
 }
 
 const styles = StyleSheet.create({
-  content: {
+  container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: '#f5f5f5',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   authContainer: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    borderRadius: 15,
     padding: 20,
-    margin: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   title: {
     fontSize: 24,
@@ -189,7 +179,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   input: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f0f2f5',
     padding: 15,
     borderRadius: 10,
     marginBottom: 15,
@@ -257,7 +247,7 @@ const styles = StyleSheet.create({
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: '#fff',
     padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',

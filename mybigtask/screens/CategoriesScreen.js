@@ -1,5 +1,4 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Background from '../components/Background';
 
 const categories = [
   { 
@@ -54,25 +53,23 @@ export default function CategoriesScreen({ navigation }) {
   );
 
   return (
-    <Background>
-      <View style={styles.content}>
-        <Text style={styles.header}>What would you like to eat?</Text>
-        <FlatList
-          data={categories}
-          renderItem={renderCategory}
-          keyExtractor={item => item.id}
-          numColumns={2}
-          contentContainerStyle={styles.listContainer}
-        />
-      </View>
-    </Background>
+    <View style={styles.container}>
+      <Text style={styles.header}>What would you like to eat?</Text>
+      <FlatList
+        data={categories}
+        renderItem={renderCategory}
+        keyExtractor={item => item.id}
+        numColumns={2}
+        contentContainerStyle={styles.listContainer}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
+  container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: '#f5f5f5',
   },
   header: {
     fontSize: 24,
