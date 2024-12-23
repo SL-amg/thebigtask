@@ -4,32 +4,32 @@ const categories = [
   { 
     id: '1', 
     name: 'Fast Food',
-    image: 'https://img.icons8.com/color/96/hamburger.png',
+    image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=500&q=80',
   },
   { 
     id: '2', 
     name: 'Italian',
-    image: 'https://img.icons8.com/color/96/pizza.png',
+    image: 'https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=500&q=80',
   },
   { 
     id: '3', 
     name: 'Asian',
-    image: 'https://img.icons8.com/color/96/sushi.png',
+    image: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=500&q=80',
   },
   { 
     id: '4', 
     name: 'Mexican',
-    image: 'https://img.icons8.com/color/96/taco.png',
+    image: 'https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=500&q=80',
   },
   { 
     id: '5', 
     name: 'Desserts',
-    image: 'https://img.icons8.com/color/96/cake.png',
+    image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80',
   },
   { 
     id: '6', 
     name: 'Drinks',
-    image: 'https://img.icons8.com/color/96/cocktail.png',
+    image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=80',
   },
 ];
 
@@ -86,9 +86,9 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   imageContainer: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 150,
+    height: 150,
+    borderRadius: 75,
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
@@ -101,10 +101,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     marginBottom: 10,
+    overflow: 'hidden',
   },
   categoryImage: {
-    width: 60,
-    height: 60,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
   categoryText: {
     fontSize: 16,
