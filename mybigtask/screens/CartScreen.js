@@ -1,6 +1,7 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { useCart } from '../context/CartContext';
 import { Ionicons } from '@expo/vector-icons';
+import Background from '../components/Background';
 
 const { width } = Dimensions.get('window');
 
@@ -56,57 +57,59 @@ export default function CartScreen() {
   );
 
   return (
-    <View style={styles.container}>
-      {cartItems.length > 0 ? (
-        <>
-          <FlatList
-            data={cartItems}
-            renderItem={renderCartItem}
-            keyExtractor={item => item.id}
-            contentContainerStyle={styles.listContainer}
-          />
-          <View style={styles.totalContainer}>
-            <View style={styles.totalRow}>
-              <Text style={styles.totalLabel}>Subtotal:</Text>
-              <Text style={styles.totalValue}>${totalPrice.toFixed(2)}</Text>
+    <Background>
+      <View style={styles.content}>
+        {cartItems.length > 0 ? (
+          <>
+            <FlatList
+              data={cartItems}
+              renderItem={renderCartItem}
+              keyExtractor={item => item.id}
+              contentContainerStyle={styles.listContainer}
+            />
+            <View style={styles.totalContainer}>
+              <View style={styles.totalRow}>
+                <Text style={styles.totalLabel}>Subtotal:</Text>
+                <Text style={styles.totalValue}>${totalPrice.toFixed(2)}</Text>
+              </View>
+              <View style={styles.totalRow}>
+                <Text style={styles.totalLabel}>Delivery Fee:</Text>
+                <Text style={styles.totalValue}>$2.99</Text>
+              </View>
+              <View style={styles.divider} />
+              <View style={styles.totalRow}>
+                <Text style={styles.grandTotalLabel}>Total:</Text>
+                <Text style={styles.grandTotalValue}>
+                  ${(totalPrice + 2.99).toFixed(2)}
+                </Text>
+              </View>
+              <TouchableOpacity style={styles.checkoutButton}>
+                <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+              </TouchableOpacity>
             </View>
-            <View style={styles.totalRow}>
-              <Text style={styles.totalLabel}>Delivery Fee:</Text>
-              <Text style={styles.totalValue}>$2.99</Text>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.totalRow}>
-              <Text style={styles.grandTotalLabel}>Total:</Text>
-              <Text style={styles.grandTotalValue}>
-                ${(totalPrice + 2.99).toFixed(2)}
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.checkoutButton}>
-              <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
-            </TouchableOpacity>
+          </>
+        ) : (
+          <View style={styles.emptyContainer}>
+            <Ionicons name="cart-outline" size={64} color="#ccc" />
+            <Text style={styles.emptyText}>Your cart is empty</Text>
+            <Text style={styles.emptySubText}>Add some delicious items to your cart</Text>
           </View>
-        </>
-      ) : (
-        <View style={styles.emptyContainer}>
-          <Ionicons name="cart-outline" size={64} color="#ccc" />
-          <Text style={styles.emptyText}>Your cart is empty</Text>
-          <Text style={styles.emptySubText}>Add some delicious items to your cart</Text>
-        </View>
-      )}
-    </View>
+        )}
+      </View>
+    </Background>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'transparent',
   },
   listContainer: {
     padding: 15,
   },
   cartItem: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: 15,
     marginBottom: 15,
     overflow: 'hidden',

@@ -1,4 +1,5 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import Background from '../components/Background';
 
 const restaurants = {
   '1': [ // Fast Food
@@ -83,21 +84,23 @@ export default function RestaurantsScreen({ route, navigation }) {
   );
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={categoryRestaurants}
-        renderItem={renderRestaurant}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.listContainer}
-      />
-    </View>
+    <Background>
+      <View style={styles.content}>
+        <FlatList
+          data={categoryRestaurants}
+          renderItem={renderRestaurant}
+          keyExtractor={item => item.id}
+          contentContainerStyle={styles.listContainer}
+        />
+      </View>
+    </Background>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'transparent',
   },
   listContainer: {
     padding: 10,

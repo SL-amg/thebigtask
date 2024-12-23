@@ -1,5 +1,6 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import { useCart } from '../context/CartContext';
+import Background from '../components/Background';
 
 const menuItems = {
   '1': [ // Burger King
@@ -74,27 +75,29 @@ export default function MenuScreen({ route, navigation }) {
   );
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={menu}
-        renderItem={renderMenuItem}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.listContainer}
-      />
-    </View>
+    <Background>
+      <View style={styles.content}>
+        <FlatList
+          data={menu}
+          renderItem={renderMenuItem}
+          keyExtractor={item => item.id}
+          contentContainerStyle={styles.listContainer}
+        />
+      </View>
+    </Background>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'transparent',
   },
   listContainer: {
     padding: 10,
   },
   menuItem: {
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: 15,
     marginBottom: 15,
     overflow: 'hidden',
