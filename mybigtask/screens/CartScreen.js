@@ -1,7 +1,7 @@
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useCart } from '../context/CartContext';
 
-export default function CartScreen() {
+export default function CartScreen({ navigation }) {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
 
   const totalPrice = cartItems.reduce((sum, item) => 
@@ -39,6 +39,10 @@ export default function CartScreen() {
     </View>
   );
 
+  const handleCheckout = () => {
+    navigation.navigate('Checkout');
+  };
+
   return (
     <View style={styles.container}>
       {cartItems.length > 0 ? (
@@ -51,7 +55,10 @@ export default function CartScreen() {
           />
           <View style={styles.totalContainer}>
             <Text style={styles.totalText}>Total: ${totalPrice.toFixed(2)}</Text>
-            <TouchableOpacity style={styles.checkoutButton}>
+            <TouchableOpacity 
+              style={styles.checkoutButton}
+              onPress={handleCheckout}
+            >
               <Text style={styles.checkoutButtonText}>Checkout</Text>
             </TouchableOpacity>
           </View>

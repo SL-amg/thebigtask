@@ -11,6 +11,7 @@ import RestaurantsScreen from './screens/RestaurantsScreen';
 import MenuScreen from './screens/MenuScreen';
 import CartScreen from './screens/CartScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import CheckoutScreen from './screens/CheckoutScreen';
 
 // Add this import
 import { CartProvider } from './context/CartContext';
@@ -36,6 +37,11 @@ function FoodOrderingStack() {
         name="Menu" 
         component={MenuScreen}
         options={({ route }) => ({ title: route.params.restaurantName })}
+      />
+      <Stack.Screen 
+        name="Checkout" 
+        component={CheckoutScreen}
+        options={{ title: 'Checkout' }}
       />
     </Stack.Navigator>
   );
