@@ -1,12 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet } from 'react-native';
+import CategoriesScreen from './screens/CategoriesScreen';
+import RestaurantsScreen from './screens/RestaurantsScreen';
+import MenuScreen from './screens/MenuScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <NavigationContainer>
       <StatusBar style="auto" />
-    </View>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Categories" 
+          component={CategoriesScreen}
+          options={{ title: 'Food Categories' }}
+        />
+        <Stack.Screen 
+          name="Restaurants" 
+          component={RestaurantsScreen}
+          options={({ route }) => ({ title: route.params.categoryName })}
+        />
+        <Stack.Screen 
+          name="Menu" 
+          component={MenuScreen}
+          options={({ route }) => ({ title: route.params.restaurantName })}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -14,7 +37,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
