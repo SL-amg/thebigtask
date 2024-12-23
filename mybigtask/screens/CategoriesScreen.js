@@ -4,26 +4,32 @@ const categories = [
   { 
     id: '1', 
     name: 'Fast Food',
-    image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500',
-    description: 'Quick meals, burgers, fries and more'
+    image: 'https://img.icons8.com/color/96/hamburger.png',
   },
   { 
     id: '2', 
     name: 'Italian',
-    image: 'https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=500',
-    description: 'Pizza, pasta, and authentic Italian cuisine'
+    image: 'https://img.icons8.com/color/96/pizza.png',
   },
   { 
     id: '3', 
     name: 'Asian',
-    image: 'https://images.unsplash.com/photo-1541696490-8744a5dc0228?w=500',
-    description: 'Sushi, noodles, and Asian specialties'
+    image: 'https://img.icons8.com/color/96/sushi.png',
   },
   { 
     id: '4', 
     name: 'Mexican',
-    image: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=500',
-    description: 'Tacos, burritos, and Mexican favorites'
+    image: 'https://img.icons8.com/color/96/taco.png',
+  },
+  { 
+    id: '5', 
+    name: 'Desserts',
+    image: 'https://img.icons8.com/color/96/cake.png',
+  },
+  { 
+    id: '6', 
+    name: 'Drinks',
+    image: 'https://img.icons8.com/color/96/cocktail.png',
   },
 ];
 
@@ -36,14 +42,13 @@ export default function CategoriesScreen({ navigation }) {
         categoryName: item.name 
       })}
     >
-      <Image
-        source={{ uri: item.image }}
-        style={styles.categoryImage}
-      />
-      <View style={styles.categoryInfo}>
-        <Text style={styles.categoryText}>{item.name}</Text>
-        <Text style={styles.categoryDescription}>{item.description}</Text>
+      <View style={styles.imageContainer}>
+        <Image
+          source={{ uri: item.image }}
+          style={styles.categoryImage}
+        />
       </View>
+      <Text style={styles.categoryText}>{item.name}</Text>
     </TouchableOpacity>
   );
 
@@ -54,6 +59,7 @@ export default function CategoriesScreen({ navigation }) {
         data={categories}
         renderItem={renderCategory}
         keyExtractor={item => item.id}
+        numColumns={2}
         contentContainerStyle={styles.listContainer}
       />
     </View>
@@ -75,11 +81,18 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   categoryItem: {
+    flex: 1,
+    alignItems: 'center',
+    margin: 10,
+  },
+  imageContainer: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
     backgroundColor: '#fff',
-    borderRadius: 15,
-    marginBottom: 15,
-    overflow: 'hidden',
-    elevation: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -87,22 +100,16 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+    marginBottom: 10,
   },
   categoryImage: {
-    width: '100%',
-    height: 150,
-  },
-  categoryInfo: {
-    padding: 15,
+    width: 60,
+    height: 60,
   },
   categoryText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
-  },
-  categoryDescription: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 5,
+    textAlign: 'center',
   },
 }); 
