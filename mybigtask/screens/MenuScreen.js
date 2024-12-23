@@ -135,10 +135,10 @@ const styles = StyleSheet.create({
   itemPrice: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2ecc71',
+    color: '#1a237e',
   },
   addButton: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: '#1a237e',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 25,

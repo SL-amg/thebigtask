@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   subtotal: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#2ecc71',
+    color: '#1a237e',
   },
   totalContainer: {
     backgroundColor: '#fff',
@@ -204,10 +204,10 @@ const styles = StyleSheet.create({
   grandTotalValue: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2ecc71',
+    color: '#1a237e',
   },
   checkoutButton: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: '#1a237e',
     padding: 15,
     borderRadius: 25,
     alignItems: 'center',
